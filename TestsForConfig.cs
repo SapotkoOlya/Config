@@ -15,6 +15,7 @@ namespace Config
         }
 
         [Test]
+        [Category("Users")]
         public void Test1()
         {
             var user1 = CredentialsConfigReader.ReadConfig("Users.json", "Retailer");
@@ -22,6 +23,7 @@ namespace Config
         }
 
         [Test]
+        [Category("Url")]
         public void Test2()
         {
             EndPointsConfigReader.Init("EndPoints.json");
@@ -32,6 +34,7 @@ namespace Config
         }
 
         [Test]
+        [Category("Web")]
         public void Test3Web()
         {
             IWebDriver driver = new ChromeDriver();
@@ -40,6 +43,22 @@ namespace Config
             var state = driver.FindElement(By.Id("reg_email")).Displayed;
             Assert.IsTrue(state, "Element is not present!");
             if(env == "dev")
+            {
+                Assert.IsFalse(state, "Element is present!");
+            }
+            driver.Quit();
+        }
+
+        [Test]
+        [Category("Web")]
+        public void Test4Web()
+        {
+            IWebDriver driver = new ChromeDriver();
+            driver.Navigate().GoToUrl("https://practice.automationtesting.in/my-account/");
+            driver.Manage().Window.Maximize();
+            var state = driver.FindElement(By.Id("reg_email")).Displayed;
+            Assert.IsTrue(state, "Element is not present!");
+            if (env == "dev")
             {
                 Assert.IsFalse(state, "Element is present!");
             }

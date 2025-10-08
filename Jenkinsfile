@@ -7,6 +7,11 @@ pipeline {
             choices: ['dev', 'staging', 'prod'],
             description: 'Select environment for test run'
         )
+    string(
+            name: 'TEST_TAG',
+            defaultValue: "Web",
+            description: 'Run tests with tag'
+    )
   }
 
   stages {
@@ -49,10 +54,10 @@ pipeline {
       archiveArtifacts artifacts: '**/*.trx', allowEmptyArchive: true
     }
     failure {
-      echo 'Сборка или тесты завершились с ошибкой.'
+      echo 'FAILURE'
     }
     success {
-      echo 'Все стадии прошли успешно.'
+      echo 'SUCCESS'
     }
   }
 }
