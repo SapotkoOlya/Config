@@ -6,9 +6,12 @@ namespace Config
 {
     public class Tests
     {
+        string env;
+
         [SetUp]
         public void Setup()
         {
+            env = Environment.GetEnvironmentVariable("ENVIRONMENT");
         }
 
         [Test]
@@ -36,6 +39,10 @@ namespace Config
             driver.Manage().Window.Maximize();
             var state = driver.FindElement(By.Id("reg_email")).Displayed;
             Assert.IsTrue(state, "Element is not present!");
+            if(env == "dev")
+            {
+                Assert.IsFalse(state, "Element is present!");
+            }
             driver.Quit();
         }
     }
