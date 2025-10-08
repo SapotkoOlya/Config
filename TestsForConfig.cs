@@ -36,6 +36,7 @@ namespace Config
             driver.Manage().Window.Maximize();
             var state = driver.FindElement(By.Id("reg_email")).Displayed;
             Assert.IsTrue(state, "Element is not present!");
+            driver.Quit();
         }
     }
 }
