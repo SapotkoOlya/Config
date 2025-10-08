@@ -2,6 +2,14 @@ pipeline {
   agent any
 
   stages {
+    stage('Clean') {
+            steps {
+                script {
+                    deleteDir()
+                }
+            }
+        }
+
     stage('Checkout') {
       steps {
         checkout scm
