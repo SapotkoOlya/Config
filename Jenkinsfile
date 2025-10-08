@@ -5,7 +5,7 @@ pipeline {
     choice(
             name: 'ENVIRONMENT',
             choices: ['dev', 'staging', 'prod'],
-            description: 'Выберите окружение для запуска'
+            description: 'Select environment for test run'
         )
   }
 
