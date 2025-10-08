@@ -1,4 +1,4 @@
-pipeline {
+п»їpipeline {
   agent any
 
   stages {
@@ -35,10 +35,13 @@ pipeline {
     }
 
     stage('Publish Test Results') {
-      steps {
-        // Убедись, что установлен плагин "Publish NUnit test result report"
-        nunit testResultsPattern: '**/*.trx'
-      }
+    steps {
+        // РџСЂРµРѕР±СЂР°Р·РѕРІР°РЅРёРµ TRX в†’ JUnit XML (РЅР°РїСЂРёРјРµСЂ, СЃ РїРѕРјРѕС‰СЊСЋ trx2junit)
+        bat 'trx2junit test_results.trx'
+
+        // РџСѓР±Р»РёРєР°С†РёСЏ РѕС‚С‡С‘С‚Р°
+        junit 'test_results.xml'
+       }
     }
   }
 
@@ -47,10 +50,10 @@ pipeline {
       archiveArtifacts artifacts: '**/*.trx', allowEmptyArchive: true
     }
     failure {
-      echo 'Сборка или тесты завершились с ошибкой.'
+      echo 'РЎР±РѕСЂРєР° РёР»Рё С‚РµСЃС‚С‹ Р·Р°РІРµСЂС€РёР»РёСЃСЊ СЃ РѕС€РёР±РєРѕР№.'
     }
     success {
-      echo 'Все стадии прошли успешно.'
+      echo 'Р’СЃРµ СЃС‚Р°РґРёРё РїСЂРѕС€Р»Рё СѓСЃРїРµС€РЅРѕ.'
     }
   }
 }
