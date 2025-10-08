@@ -1,0 +1,14 @@
+{
+  "Admin": {
+    "username": "abs",
+    "password": "dgfhsgfh"
+  },
+  "Retailer": {
+    "username": "ads",
+    "password": "dbfhbdhd"
+  },
+  "Reseller": {
+    "username": "aps",
+    "password": "khgfehde"
+  }
+}

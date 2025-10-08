@@ -1,0 +1,6 @@
+{
+  "AdminApiUsername": "admin",
+  "AdminApiPassword": "password",
+  "AdminApiUrl": "https://best.api.com",
+  "ReturnsApiUrl": "https://returns-api-url.com"
+}
