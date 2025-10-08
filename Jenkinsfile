@@ -33,16 +33,6 @@ pipeline {
         bat 'dotnet test --no-build --configuration Release --logger:"trx;LogFileName=test-results.trx"'
       }
     }
-
-    stage('Publish Test Results') {
-    steps {
-        // Преобразование TRX → JUnit XML (например, с помощью trx2junit)
-        bat 'trx2junit test_results.trx'
-
-        // Публикация отчёта
-        junit 'test_results.xml'
-       }
-    }
   }
 
   post {
