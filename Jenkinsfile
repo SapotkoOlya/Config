@@ -38,7 +38,7 @@ pipeline {
 
     stage('Test') {
       steps {
-        echo 'Select ENV: ${parameters.ENVIRONMENT}' 
+        echo 'Select ENV: ${params.ENVIRONMENT}' 
         bat 'dotnet test --no-build --configuration Release --logger:"trx;LogFileName=test-results.trx"'
       }
     }
