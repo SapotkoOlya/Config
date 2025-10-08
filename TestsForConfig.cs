@@ -1,9 +1,11 @@
+using Allure.NUnit;
 using Config.ConfigReaders;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 
 namespace Config
 {
+    [AllureNUnit]
     public class Tests
     {
         string env;

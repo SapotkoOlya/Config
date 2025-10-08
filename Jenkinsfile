@@ -47,6 +47,18 @@ pipeline {
         bat "dotnet test --filter \"Category=${params.TEST_TAG}\" --logger:\"trx;LogFileName=test-results.trx\""
       }
     }
+
+    stage('Generate Allure Results') {
+            steps {
+                bat 'allure generate TestResults --clean -o allure-report'
+            }
+        }
+
+        stage('Publish Allure Report') {
+            steps {
+                allure includeProperties: false, jdk: '', results: [[path: 'TestResults']]
+            }
+        }
   }
 
   post {
