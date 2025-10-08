@@ -1,6 +1,14 @@
 pipeline {
   agent any
 
+  parameters {
+    choice(
+            name: 'ENVIRONMENT',
+            choices: ['dev', 'staging', 'prod'],
+            description: 'Выберите окружение для запуска'
+        )
+  }
+
   stages {
     stage('Clean') {
             steps {
