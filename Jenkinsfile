@@ -57,21 +57,21 @@ pipeline {
 	  }
 	}
 	
-	stage('Publish report') {
-    steps {
-    allure(
-      includeProperties: false,
-      jdk: '',
-      results: [[path: 'TestResults']],
-      reportBuildPolicy: 'ALWAYS'
-    )
-  }
-}
+	
 
   }
   
   post {
-    always {
+    always 
+	  bat 'allure generate TestResults --clean -o allure-report'
+	  script {
+	    allure([
+      includeProperties: false,
+      jdk: '',
+      results: [[path: 'TestResults']],
+      reportBuildPolicy: 'ALWAYS'
+    ])
+	  }
 	  archiveArtifacts artifacts: '**/*.trx', allowEmptyArchive: true
 	}
     failure {
