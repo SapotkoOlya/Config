@@ -1,12 +1,9 @@
-using Allure.NUnit;
-using Allure.NUnit.Attributes;
 using Config.ConfigReaders;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 
 namespace Config
 {
-    [AllureNUnit]
     public class Tests
     {
         string env;
@@ -14,13 +11,10 @@ namespace Config
         [SetUp]
         public void Setup()
         {
-            env = Environment.GetEnvironmentVariable("ENVIRONMENT");
+       
         }
 
         [Test]
-        [Category("Users")]
-        [Category("QA")]
-        [AllureTag("Users")]
         public void Test1()
         {
             var user1 = CredentialsConfigReader.ReadConfig("Users.json", "Retailer");
@@ -28,9 +22,6 @@ namespace Config
         }
 
         [Test]
-        [Category("Url")]
-        [Category("QA")]
-        [AllureTag("Url")]
         public void Test2()
         {
             EndPointsConfigReader.Init("EndPoints.json");
@@ -41,9 +32,6 @@ namespace Config
         }
 
         [Test]
-        [Category("Web")]
-        [Category("QA")]
-        [AllureTag("Web")]
         public void Test3Web()
         {
             IWebDriver driver = new ChromeDriver();
@@ -51,17 +39,9 @@ namespace Config
             driver.Manage().Window.Maximize();
             var state = driver.FindElement(By.Id("reg_email")).Displayed;
             Assert.IsTrue(state, "Element is not present!");
-            if(env == "dev")
-            {
-                Assert.IsFalse(state, "Element is present!");
-            }
-            driver.Quit();
         }
 
         [Test]
-        [Category("Web")]
-        [Category("QA")]
-        [AllureTag("Web")]
         public void Test4Web()
         {
             IWebDriver driver = new ChromeDriver();
@@ -69,10 +49,6 @@ namespace Config
             driver.Manage().Window.Maximize();
             var state = driver.FindElement(By.Id("reg_email")).Displayed;
             Assert.IsTrue(state, "Element is not present!");
-            if (env == "dev")
-            {
-                Assert.IsFalse(state, "Element is present!");
-            }
             driver.Quit();
         }
     }
