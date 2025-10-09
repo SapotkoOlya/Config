@@ -15,6 +15,8 @@ namespace Config
         }
 
         [Test]
+        [Category("Users")]
+        [Category("QA")]
         public void Test1()
         {
             var user1 = CredentialsConfigReader.ReadConfig("Users.json", "Retailer");
@@ -22,6 +24,8 @@ namespace Config
         }
 
         [Test]
+        [Category("Url")]
+        [Category("QA")]
         public void Test2()
         {
             EndPointsConfigReader.Init("EndPoints.json");
@@ -32,6 +36,8 @@ namespace Config
         }
 
         [Test]
+        [Category("Web")]
+        [Category("QA")]
         public void Test3Web()
         {
             IWebDriver driver = new ChromeDriver();
@@ -42,6 +48,8 @@ namespace Config
         }
 
         [Test]
+        [Category("Web")]
+        [Category("QA")]
         public void Test4Web()
         {
             IWebDriver driver = new ChromeDriver();

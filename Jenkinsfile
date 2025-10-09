@@ -7,6 +7,11 @@ pipeline {
 	  choices:['dev', 'staging', 'prod'],
 	  description: 'Set ENV'
 	)
+	string(
+	  name:'TEST_TAG',
+	  defaultValue: 'QA',
+	  description: 'Run tests with tag'
+	)
   }
   
   stages {
@@ -42,7 +47,7 @@ pipeline {
     stage('Test') {
       steps {
 	    echo "Select ENV: ${params.ENVIRONMENT}"
-        bat 'dotnet test --no-build --configuration Release --logger:"trx;LogFileName=test-result.trx"'	
+        bat "dotnet test --filter\"Category=${params.TEST_TAG}\" --logger:\"trx;LogFileName=test-result.trx\""
       }
     }
   }
