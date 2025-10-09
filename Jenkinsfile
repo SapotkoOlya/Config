@@ -7,9 +7,9 @@ pipeline {
 	    step {
 		  script {
 		    deleteDir()
-	       }
-		 }
-        }
+	      }
+		}
+      }
 		
     stage('Checkout') {
       steps {
