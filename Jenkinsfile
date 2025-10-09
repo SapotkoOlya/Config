@@ -58,10 +58,16 @@ pipeline {
 	}
 	
 	stage('Publish report') {
-	  steps{
-	    allure includeProperties: false, jdk: ", results: [[path: 'TestResults']]
-	  }
-	}
+    steps {
+    allure(
+      includeProperties: false,
+      jdk: '',
+      results: [[path: 'TestResults']],
+      reportBuildPolicy: 'ALWAYS'
+    )
+  }
+}
+
   }
   
   post {
