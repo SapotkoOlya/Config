@@ -3,13 +3,13 @@ pipeline {
   
   stages {
     stage('Clean') {
-	  steps {
+	  
 	    steps {
 		  script {
 		    deleteDir()
 	      }
 		}
-      }
+      
 	}
 
 		
