@@ -1,6 +1,14 @@
 pipeline {
   agent any
   
+  parameters {
+    choice(
+	  name:'ENVIRONMENT',
+	  choices:['dev', 'staging', 'prod'],
+	  description: 'Set ENV'
+	)
+  }
+  
   stages {
     stage('Clean') {
 	  
@@ -33,6 +41,7 @@ pipeline {
 
     stage('Test') {
       steps {
+	    echo "Select ENV: ${params.ENVIRONMENT}"
         bat 'dotnet test --no-build --configuration Release --logger:"trx;LogFileName=test-result.trx"'	
       }
     }
