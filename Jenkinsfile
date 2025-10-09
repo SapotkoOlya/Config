@@ -47,7 +47,7 @@ pipeline {
     stage('Test') {
       steps {
 	    echo "Select ENV: ${params.ENVIRONMENT}"
-        bat "dotnet test --filter\"Category=${params.TEST_TAG}\" --logger:\"trx;LogFileName=test-result.trx\""
+        bat "dotnet test --filter \"Category=${params.TEST_TAG}\" --logger:\"trx;LogFileName=test-result.trx\""
       }
     }
   }
