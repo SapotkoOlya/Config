@@ -10,6 +10,8 @@ pipeline {
 	      }
 		}
       }
+	}
+
 		
     stage('Checkout') {
       steps {
@@ -47,5 +49,4 @@ pipeline {
       echo 'SUCCESS!!!'
     }
   }
-}
 }
